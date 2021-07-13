@@ -53,6 +53,9 @@ public class MainActivity extends AppCompatActivity {
                     Location data = locationResult.getLastLocation();
                     double lat = data.getLatitude();
                     double lng = data.getLongitude();
+                    String msg = "Lat : " + lat +
+                            " Lng : " + lng;
+                    Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT).show();
                 }
             };
         };
@@ -62,7 +65,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (checkPermission() == true){
                     client.requestLocationUpdates(mLocationRequest,mLocationCallback,null);
-                    Toast.makeText(MainActivity.this, "Update Successfully", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -71,7 +73,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 client.removeLocationUpdates(mLocationCallback);
-                Toast.makeText(MainActivity.this, "Removed Successfully", Toast.LENGTH_SHORT).show();
             }
         });
 
